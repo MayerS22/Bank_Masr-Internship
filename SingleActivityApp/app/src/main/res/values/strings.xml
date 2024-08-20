@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Single Activity App</string>
+    <string name="google_address">Ramses Street</string>
+    <string name="google_details">Google LLC is an American multinational corporation and technology company focusing on online advertising, search engine technology, cloud computing, computer software, quantum computing, e-commerce, consumer electronics, and artificial intelligence.</string>
+    <string name="google_email"><u>google.com</u></string>
+</resources>
