@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">تسجيل دخول بنك مصر</string>
+    <string name="UserName">اسم المستخدم</string>
+    <string name="Language">En</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forget_username_password">نسيت اسم الامستخدم/كلة المرور؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="need_help">"مزيد من المساعدة؟ "</string>
+    <string name="contact_us">اتصل بينا</string>
+    <string name="products">منتجانا</string>
+    <string name="atm">اقرب فرع او مكينة صرف اّلي</string>
+    <string name="exchange_rate">سعر الصرف</string>
+    <string name="security_tips">نصائح امنية</string>
+</resources>
