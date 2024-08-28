@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TripCalculatorTheme {
-                StartScreen()
+                AppNavHost()
             }
 
         }
@@ -32,9 +32,9 @@ fun TripCalculator(){
 }
 
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun TripCalculatorPreview(){
-    TripCalculator()
+    AppNavHost()
 }
 

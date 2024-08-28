@@ -20,9 +20,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun StartScreen(modifier: Modifier = Modifier) {
+fun StartScreen(navController: NavController ,modifier: Modifier = Modifier) {
     val screenWidth= LocalConfiguration.current.screenWidthDp.toFloat()
     val context= LocalContext.current
     Column (
@@ -34,14 +36,19 @@ fun StartScreen(modifier: Modifier = Modifier) {
             modifier=modifier.size(290.dp)
         )
         Button(onClick = {
-            MediaPlayer.create(context,R.raw.car_horn).start()
+            MediaPlayer
+                .create(context,R.raw.car_horn)
+                .start()
+                navController.navigate(Route.DISTANCE)
             },
             modifier.align(Alignment.CenterHorizontally)) {
             Text(text="Start")
         }
         Image(
             painter = painterResource(id = R.drawable.car), contentDescription ="Car" ,
-            modifier=modifier.size(320.dp).offset(screenWidth.dp/2,0.dp)
+            modifier= modifier
+                .size(320.dp)
+                .offset(screenWidth.dp / 2, 0.dp)
         )
 
     }
@@ -50,5 +57,5 @@ fun StartScreen(modifier: Modifier = Modifier) {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 private fun StartScreenPreview() {
-    StartScreen()
+    StartScreen(rememberNavController())
 }

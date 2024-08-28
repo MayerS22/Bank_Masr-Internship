@@ -265,12 +265,6 @@ fun LogInPage(modifier: Modifier = Modifier) {
             }
 
 
-
-
-
-
-
-
         }
     }
 }
