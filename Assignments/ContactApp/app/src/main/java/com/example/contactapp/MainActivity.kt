@@ -41,6 +41,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -85,20 +86,20 @@ fun MyTopBar() {
                 style = MaterialTheme.typography.titleLarge,
                 color = Color.DarkGray,
                 textAlign = TextAlign.Start,
-                modifier = Modifier.fillMaxWidth(0.7f) // Adjust the width as needed
+                modifier = Modifier.fillMaxWidth(0.7f)
             )
         },
         actions = {
             IconButton(onClick = { /* TODO: Handle home button click */ }) {
                 Icon(
-                    painter = painterResource(id = R.drawable.home), // Replace with your home icon
+                    painter = painterResource(id = R.drawable.home),
                     contentDescription = "Home",
                     tint = Color.DarkGray
                 )
             }
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = Color(0xFFFFFFFF), // Change to your desired color
+            containerColor = Color(0xFFFFFFFF), 
             titleContentColor = Color.White
         )
     )
@@ -106,36 +107,42 @@ fun MyTopBar() {
 
 @Composable
 fun ContactList(contacts: List<Contact>, modifier: Modifier = Modifier) {
+    val configuration = LocalConfiguration.current
+    val columns = if (configuration.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) {
+        5
+    } else {
+        3
+    }
+
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3), // 3 contacts beside each other
+        columns = GridCells.Fixed(columns),
         modifier = modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.Top, // No vertical spacing
-        horizontalArrangement = Arrangement.Start // No horizontal spacing
+        verticalArrangement = Arrangement.Top,
+        horizontalArrangement = Arrangement.Start
     ) {
         items(contacts) { contact ->
             ContactListItem(contact = contact)
         }
     }
 }
-
 @SuppressLint("ResourceType")
 @Composable
 fun ContactListItem(contact: Contact, modifier: Modifier = Modifier) {
     val context = LocalContext.current // Get the current context
 
     Card(
-        shape = RoundedCornerShape(0.dp), // Square or rectangle shape
-        colors = CardDefaults.cardColors(containerColor = Color.White), // Ensure background is white
+        shape = RoundedCornerShape(0.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         modifier = modifier
             .fillMaxHeight()
             .clickable {
-                // Create an Intent to open the dialer with the contact's phone number
                 val intent = Intent(Intent.ACTION_DIAL).apply {
                     data = Uri.parse("tel:${context.getString(contact.phoneNumber)}")
                 }
-                context.startActivity(intent) // Start the dialer activity
+                context.startActivity(intent)
             }
     ) {
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
