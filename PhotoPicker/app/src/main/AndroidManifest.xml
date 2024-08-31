@@ -13,6 +13,16 @@
         android:theme="@style/Theme.PhotoPicker"
         tools:targetApi="31">
         <activity
+            android:name=".ImageEffectActivity"
+            android:exported="false"
+            android:label="@string/title_activity_image_effect"
+            android:theme="@style/Theme.PhotoPicker" />
+        <activity
+            android:name=".PictureChooserActivity"
+            android:exported="false"
+            android:label="@string/title_activity_picture_chooser"
+            android:theme="@style/Theme.PhotoPicker" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
