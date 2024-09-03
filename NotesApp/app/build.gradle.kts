@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.counterapp"
+    namespace = "com.example.notesapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.counterapp"
+        applicationId = "com.example.notesapp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -66,5 +66,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
 }
